@@ -41,6 +41,14 @@ class ArticlesController < ApplicationController
         puts "-------------------------------------"
     end
 
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+
+        # Function call - just list the params after the func name
+        redirect_to articles_path
+    end
+
     private
         def article_params 
             params.require(:article).permit(:title, :text)
