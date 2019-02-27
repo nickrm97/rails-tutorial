@@ -24,8 +24,20 @@ class ArticlesController < ApplicationController
         # render plain: @article.title
     end
 
-    def 
+    def edit
+        @article = Article.find(params[:id])
+    end
 
+    def update
+        @article = Article.find(params[:id])
+
+        # If it updates, getting the params from the func. prev defined
+        if @article.update(article_params)
+            redirect_to @article
+        else
+            render 'edit'
+        end
+    end 
 
     def destroy
         @article = Article.find(params[:id])
